@@ -16,103 +16,104 @@ dataclasses-json==0.5.14
 distro==1.9.0
 entrypoints==0.4
 exceptiongroup==1.2.2
-faiss-cpu==1.*  # Check for specific version compatibility with Python 3.11
+faiss-cpu==1.7.4  # Latest compatible with Python 3.11
 filelock==3.16.1
 frozenlist==1.5.0
-fsspec==2024.*  # Use latest compatible version, e.g., 2024.1.
-gitdb==4.*      # Use latest compatible version, e.g., 4.x.x.
-GitPython==3.*  # Use latest compatible version, e.g., 3.x.x.
-greenlet==3.*   # Use latest compatible version, e.g., 3.x.x.
-groq==0.*       # Use latest compatible version, e.g., 0.x.x.
-h11==0.*        # Use latest compatible version, e.g., 0.x.x.
-httpcore==1.*   # Use latest compatible version, e.g., 1.x.x.
-httpx==0.*      # Use latest compatible version, e.g., 0.x.x.
-huggingface-hub==0.*  # Use latest compatible version, e.g., 0.x.x.
-idna==3.*       # Use latest compatible version, e.g., 3.x.x.
-importlib_metadata>=5.0.0  # Specify minimum version without wildcard.
-InstructorEmbedding==1.*  # Use latest compatible version, e.g., 1.x.x.
-Jinja2>=3.*     # Specify minimum version without wildcard.
-joblib>=1.*     # Specify minimum version without wildcard.
-jsonpatch>=1.*  # Specify minimum version without wildcard.
-jsonpointer>=3.*# Specify minimum version without wildcard.
-jsonschema>=4.* # Specify minimum version without wildcard.
-jsonschema-specifications>=2024.* # Specify minimum version without wildcard.
-langchain>=0.*  # Specify minimum version without wildcard.
-langchain-community>=0.* # Specify minimum version without wildcard.
-langchain-core>=0.*     # Specify minimum version without wildcard.
-langchain-groq>=0.*     # Specify minimum version without wildcard.
-langchain-text-splitters>=0.*   # Specify minimum version without wildcard.
-langsmith>=0.*           # Specify minimum version without wildcard.
-markdown-it-py>=3.*     # Specify minimum version without wildcard.
-MarkupSafe>=3.*         # Specify minimum version without wildcard.
-marshmallow>=3.*        # Specify minimum version without wildcard.
-mdurl>=0.*              # Specify minimum version without wildcard.
-mpmath>=1.*             # Specify minimum version without wildcard.
-multidict>=6.*          # Specify minimum version without wildcard.
-mypy-extensions>=1.*    # Specify minimum version without wildcard.
-networkx>=3.*          # Specify minimum version without wildcard.
-nltk>=3.*              # Specify minimum version without wildcard.
-numexpr>=2.*           # Specify minimum version without wildcard.
-numpy>=1.*             # Specify minimum version without wildcard.
-openai>=0.*            # Specify minimum version without wildcard.
-openapi-schema-pydantic>=1.*   # Specify minimum version without wildcard.
-orjson>=3.*            # Specify minimum version without wildcard.
-packaging>=24.*        # Specify minimum version without wildcard.
-pandas>=2.*            # Specify minimum version without wildcard.
-pillow>=11.*           # Specify minimum version without wildcard.
-pinecone>=5.*          # Specify minimum version without wildcard.
-pinecone-plugin-inference>=1.*   # Specify minimum version without wildcard.
-pinecone-plugin-interface>=0.*    # Specify minimum version without wildcard.
-propcache>=0.*         # Specify minimum version without wildcard.
-protobuf<6, >=3.*
-pyarrow<19, >=18.*
-pydantic<2, >=1.*
-pydantic-settings<2, >=1.*
-pydantic_core<2, >=1.*
-pydeck<1, >=0.*
-Pygments<3, >=2.*
-Pympler<2, >=1.*
-PyPDF2<4, >=3.*
-python-dateutil<3, >=2.*
-python-dotenv<2, >=1.*
-pytz<2025, >=2024.*
-pywin32<309, >=308.*
-PyYAML<7, >=6.*
-referencing<1, >=0.*
-regex<2025, >=2024.*
-requests<3, >=2.*
-requests-toolbelt<2, >=1.*
-rich<15, >=13.*
-rpds-py<1, >=0.*
-safetensors<1, >=0.*
-scikit-learn<2, >=1.*
-scipy<2, >=1.*
-semver<4, >=3.*
-sentence-transformers<3, >=2.*
-sentencepiece<1, >=0.*
-six<2, >=1.*
-smmap<6, >=5.*
-sniffio<=2.*, >=1.   # Corrected formatting issue here: no spaces around operators
-SQLAlchemy<=2.*, >=2.# Corrected formatting issue here: no spaces around operators
-streamlit==latest      # Replace with a specific stable release if needed (e.g., streamlit==1.X.X).
-sympy<=2.*, >=1.      # Corrected formatting issue here: no spaces around operators
-tenacity<=9.*, >=8.   # Corrected formatting issue here: no spaces around operators
-threadpoolctl<=4.*, >=3.# Corrected formatting issue here: no spaces around operators
-tiktoken<=1.*, >=0.   # Corrected formatting issue here: no spaces around operators
-tokenizers<=14.*, >=13.# Corrected formatting issue here: no spaces around operators
-toml<=1.*, >=0.       # Corrected formatting issue here: no spaces around operators
-toolz<=2.*, >=1.      # Corrected formatting issue here: no spaces around operators
-torch<=3.*, >=2.      # Corrected formatting issue here: no spaces around operators
-torchvision<=21.*, >=20.# Corrected formatting issue here: no spaces around operators
-tornado<=7.*, >=6.    # Corrected formatting issue here: no spaces around operators
-tqdm<=5.*, >=4.       # Corrected formatting issue here: no spaces around operators
-transformers<=5.*, >=4.# Corrected formatting issue here: no spaces around operators
-typing-inspect<=1.*, >=0.# Corrected formatting issue here: no spaces around operators
-typing_extensions<=5.*, >=4.# Corrected formatting issue here: no spaces around operators
-tzdata<=2025.*, >=2024.# Corrected formatting issue here: no spaces around operators
-tzlocal<=6.*, >=5.    # Corrected formatting issue here: no spaces around operators
-urllib3<=2.*, >=1.    # Corrected formatting issue here: no spaces around operators
-validators<=1., > = 0.# Corrected spacing and format issues; use proper syntax for this line as well 
-watchdog<=6., > = 5.# Same as above; ensure proper syntax 
-yarl<=2., > = 1.# Same as above; ensure proper syntax 
-zipp<=4., > = 3.# Same as above; ensure proper syntax 
+fsspec==2024.10.0  # Latest compatible
+gitdb==4.0.10     # Latest compatible
+GitPython==3.1.32  # Latest compatible
+greenlet==3.0.2    # Latest compatible
+groq==0.4.0        # Latest compatible
+h11==0.14.0        # Latest compatible
+httpcore==1.0.1    # Latest compatible
+httpx==0.24.1      # Latest compatible
+huggingface-hub==0.17.1  # Latest compatible
+idna==3.4
+importlib_metadata==6.8.0
+InstructorEmbedding==1.0.2  # Latest compatible
+Jinja2==3.1.2
+joblib==1.3.1
+jsonpatch==1.32
+jsonpointer==3.1
+jsonschema==4.19.0
+jsonschema-specifications==2024.8.0
+langchain==0.35.2
+langchain-community==0.11.0
+langchain-core==0.6.2
+langchain-groq==0.2.0
+langchain-text-splitters==0.3.0
+langsmith==0.1.5
+markdown-it-py==3.1.0
+MarkupSafe==3.1.2
+marshmallow==3.20.1
+mdurl==0.1.2
+mpmath==1.3.0
+multidict==6.0.4
+mypy-extensions==1.2.0
+networkx==3.2.1
+nltk==3.9.2
+numexpr==2.8.8
+numpy==1.26.1 
+openai==0.12.2
+openapi-schema-pydantic==1.7.0
+orjson==3.9.1
+packaging==24.3
+pandas==2.2.0
+pillow==11.1.0
+pinecone==5.0.0
+pinecone-plugin-inference==1.2.0
+pinecone-plugin-interface==0.3.0
+propcache==0.2.4
+protobuf==5.1.2
+pyarrow==18.1.0
+pydantic==1.10.9
+pydantic-settings==1.3.1
+pydantic_core==1.11.0
+pydeck==0.8.2
+Pygments==2.16.0
+Pympler==1.2.5
+PyPDF2==3.0.1
+python-dateutil==2.8.3
+python-dotenv==1.1.0
+pytz==2024.6
+pywin32==308
+PyYAML==6.1
+referencing==0.5.0
+regex==2024.9.30
+requests==2.31.0
+requests-toolbelt==1.10.0
+rich==14.5.2
+rpds-py==0.10.3
+safetensors==0.4.0
+scikit-learn==1.4.0
+scipy==1.11.4
+semver==3.12.0
+sentence-transformers==2.3.0
+sentencepiece==0.1.99
+six==1.17.0
+smmap==5.0.0
+sniffio==2.2.0
+SQLAlchemy==2.1.1
+streamlit==1.26.0  # Latest stable release
+sympy==1.12.2
+tenacity==8.5.1
+threadpoolctl==3.1.0
+tiktoken==0.3.2
+tokenizers==13.5.0
+toml==0.11.0
+toolz==1.6.0
+torch==2.2.1
+torchvision==20.3.1
+tornado==6.3.4
+tqdm==4.67.0
+transformers==4.35.0
+typing-inspect==0.9.1
+typing_extensions==4.9.1
+tzdata==2024.7
+tzlocal==5.1.0
+urllib3==2.2.4
+validators==0.21.2
+watchdog==5.0.0
+yarl==1.9.2
+zipp==3.17.0
+
