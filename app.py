@@ -264,38 +264,66 @@ def get_text_chunks(text):
     return chunks
 
 def get_vectorstore(text_chunks):
+    logging.info("Starting to create vector store...")
+    
     try:
+        # Retrieve Pinecone API key from environment variables
         api_key = os.environ.get("PINECONE_API_KEY")
         if not api_key:
             logging.error("Pinecone API key is not set.")
             st.error("Pinecone API key is not set. Please check your environment variables.")
             return None
+        
+        logging.info("Pinecone API key retrieved successfully.")
 
+        # Initialize Pinecone client
         pc = Pinecone(api_key=api_key)
-        index_name = "llm"
+        logging.info("Pinecone client initialized.")
 
-        if index_name not in pc.list_indexes().names():
-            logging.info(f"Creating new index: {index_name}")
+        index_name = "llm"
+        logging.info(f"Checking if index '{index_name}' exists...")
+
+        # Check if the index already exists
+        existing_indexes = pc.list_indexes().names()
+        logging.debug(f"Existing indexes: {existing_indexes}")
+
+        if index_name not in existing_indexes:
+            logging.info(f"Index '{index_name}' does not exist. Creating new index...")
             pc.create_index(
                 name=index_name,
                 dimension=768,
                 metric="euclidean",
                 spec=ServerlessSpec(cloud="aws", region="us-east-1")
             )
+            logging.info(f"Index '{index_name}' created successfully.")
         else:
-            logging.info(f"Using existing index: {index_name}")
+            logging.info(f"Using existing index: '{index_name}'.")
 
+        # Describe the index to get its details
         index_info = pc.describe_index(index_name)
         host = index_info.host
-        logging.info(f"Index host: {host}")
+        logging.info(f"Index '{index_name}' described successfully. Host: {host}")
 
+        # Initialize the Index object
         index = Index(index_name=index_name, api_key=api_key, host=host)
+        logging.info(f"Index object created for '{index_name}'.")
 
+        # Initialize embeddings
         embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+        logging.info("HuggingFaceInstructEmbeddings initialized with model 'hkunlp/instructor-xl'.")
+
+        # Create vector store from text chunks
+        logging.info(f"Creating vector store from {len(text_chunks)} text chunks...")
+        
         vectorstore = PineconeStore.from_texts(texts=text_chunks, embedding=embeddings, index_name=index_name)
         
         logging.info("Vector store created successfully.")
+        
         return vectorstore
+
+    except Exception as e:
+        logging.error(f"Error creating vector store: {e}", exc_info=True)
+        st.error("An error occurred while creating the vector store.")
 
     except Exception as e:
         logging.error(f"Error creating vector store: {e}")
