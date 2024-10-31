@@ -30,7 +30,7 @@ httpx==0.24.1      # Latest compatible
 huggingface-hub==0.17.1  # Latest compatible
 idna==3.4
 importlib_metadata==6.8.0
-InstructorEmbedding==1.0.2  # Latest compatible
+InstructorEmbedding==1.0.1  # Latest compatible
 Jinja2==3.1.2
 joblib==1.3.1
 jsonpatch==1.32
