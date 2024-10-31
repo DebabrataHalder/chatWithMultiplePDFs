@@ -94,7 +94,7 @@ tzlocal==5.2
 urllib3==2.2.2
 validators==0.33.0
 watchdog==4.0.1
-yarl==1.9.4
+yarl==1.12.1
 zipp==3.19.2
 
 
