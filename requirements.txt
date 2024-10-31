@@ -16,7 +16,7 @@ dataclasses-json==0.5.14
 distro==1.9.0
 entrypoints==0.4
 exceptiongroup==1.2.2
-faiss-gpu==1.9.0
+faiss-gpu==1.7.2
 filelock==3.16.1
 frozenlist==1.5.0
 fsspec==2024.10.0
