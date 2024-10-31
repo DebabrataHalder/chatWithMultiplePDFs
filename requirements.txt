@@ -57,7 +57,7 @@ numpy==1.26.0
 openai==0.27.8
 openapi-schema-pydantic==1.2.4
 orjson==3.9.1
-packaging==24.3
+packaging==24.3.1
 pandas==2.2.0
 pillow==11.1.0
 pinecone==5.0.0
@@ -76,8 +76,7 @@ PyPDF2==3.0.1
 python-dateutil==2.8.3
 python-dotenv==1.1.0
 pytz==2024.6
-pywin32==308
-PyYAML==6.1
+PyYAML==6.1.0
 referencing==0.5.0
 regex==2024.9.30
 requests==2.31.0
