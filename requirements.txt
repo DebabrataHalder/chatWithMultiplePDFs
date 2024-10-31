@@ -16,102 +16,103 @@ dataclasses-json==0.5.14
 distro==1.9.0
 entrypoints==0.4
 exceptiongroup==1.2.2
-faiss-cpu==1.7.4
+faiss-cpu==1.*  # Check for specific version compatibility with Python 3.11
 filelock==3.16.1
 frozenlist==1.5.0
-fsspec==2024.10.0
-gitdb==4.0.11
-GitPython==3.1.43
-greenlet==3.1.1
-groq==0.11.0
-h11==0.14.0
-httpcore==1.0.6
-httpx==0.27.2
-huggingface-hub==0.14.1
-idna==3.10
-importlib_metadata==8.5.0
-InstructorEmbedding==1.0.1
-Jinja2==3.1.4
-joblib==1.4.2
-jsonpatch==1.33
-jsonpointer==3.0.0
-jsonschema==4.23.0
-jsonschema-specifications==2024.10.1
-langchain==0.3.4
-langchain-community==0.3.3
-langchain-core==0.3.13
-langchain-groq==0.2.0
-langchain-text-splitters==0.3.0
-langsmith==0.1.137
-markdown-it-py==3.0.0
-MarkupSafe==3.0.2
-marshmallow==3.23.0
-mdurl==0.1.2
-mpmath==1.3.0
-multidict==6.1.0
-mypy-extensions==1.0.0
-networkx==3.4.2
-nltk==3.9.1
-numexpr==2.10.1
-numpy==1.26.4
-openai==0.27.6
-openapi-schema-pydantic==1.2.4
-orjson==3.10.10
-packaging==24.1
-pandas==2.2.3
-pillow==11.0.0
-pinecone==5.3.1
-pinecone-plugin-inference==1.1.0
-pinecone-plugin-interface==0.0.7
-propcache==0.2.0
-protobuf==3.20.3
-pyarrow==18.0.0
-pydantic==2.9.2
-pydantic-settings==2.6.0
-pydantic_core==2.23.4
-pydeck==0.9.1
-Pygments==2.18.0
-Pympler==1.1
-PyPDF2==3.0.1
-python-dateutil==2.9.0.post0
-python-dotenv==1.0.0
-pytz==2024.2
-PyYAML==6.0.2
-referencing==0.35.1
-regex==2024.9.11
-requests==2.32.3
-requests-toolbelt==1.0.0
-rich==13.9.3
-rpds-py==0.20.0
-safetensors==0.4.5
-scikit-learn==1.5.2
-scipy==1.14.1
-semver==3.0.2
-sentence-transformers==2.2.2
-sentencepiece==0.2.0
-six==1.16.0
-smmap==5.0.1
-sniffio==1.3.1
-SQLAlchemy==2.0.36
-streamlit==1.18.1
-sympy==1.13.1
-tenacity==8.5.0
-threadpoolctl==3.5.0
-tiktoken==0.4.0
-tokenizers==0.13.3
-toml==0.10.2
-toolz==1.0.0
-torch==2.5.0
-torchvision==0.20.0
-tornado==6.4.1
-tqdm==4.66.6
-transformers==4.31.0
-typing-inspect==0.9.0
-typing_extensions==4.12.2
-tzdata==2024.2
-tzlocal==5.2
-urllib3==2.2.3
-validators==0.34.0
-watchdog==5.0.3
-yarl==1.16.0
-zipp==3.20.2
+fsspec==2024.*  # Use latest compatible version
+gitdb==4.*      # Use latest compatible version
+GitPython==3.*  # Use latest compatible version
+greenlet==3.*   # Use latest compatible version
+groq==0.*       # Use latest compatible version
+h11==0.*        # Use latest compatible version
+httpcore==1.*   # Use latest compatible version
+httpx==0.*      # Use latest compatible version
+huggingface-hub==0.*  # Use latest compatible version
+idna==3.*       # Use latest compatible version
+importlib_metadata>=5.*
+InstructorEmbedding==1.*  # Use latest compatible version
+Jinja2>=3.*
+joblib>=1.*
+jsonpatch>=1.*
+jsonpointer>=3.*
+jsonschema>=4.*
+jsonschema-specifications>=2024.*
+langchain>=0.*
+langchain-community>=0.*
+langchain-core>=0.*
+langchain-groq>=0.*
+langchain-text-splitters>=0.*
+langsmith>=0.*
+markdown-it-py>=3.*
+MarkupSafe>=3.*
+marshmallow>=3.*
+mdurl>=0.*
+mpmath>=1.*
+multidict>=6.*
+mypy-extensions>=1.*
+networkx>=3.*
+nltk>=3.*
+numexpr>=2.*
+numpy>=1.* 
+openai>=0.*
+openapi-schema-pydantic>=1.*
+orjson>=3.*
+packaging>=24.*
+pandas>=2.* 
+pillow>=11.* 
+pinecone>=5.* 
+pinecone-plugin-inference>=1.* 
+pinecone-plugin-interface>=0.* 
+propcache>=0.* 
+protobuf<6, >=3.* 
+pyarrow<19, >=18.* 
+pydantic<2, >=1.* 
+pydantic-settings<2, >=1.* 
+pydantic_core<2, >=1.* 
+pydeck<1, >=0.* 
+Pygments<3, >=2.* 
+Pympler<2, >=1.* 
+PyPDF2<4, >=3.* 
+python-dateutil<3, >=2.* 
+python-dotenv<2, >=1.* 
+pytz<2025, >=2024.* 
+pywin32<309, >=308.* 
+PyYAML<7, >=6.* 
+referencing<1, >=0.* 
+regex<2025, >=2024.* 
+requests<3, >=2.*
+requests-toolbelt<2, >=1.*
+rich<15, >=13.*
+rpds-py<1, >=0.*
+safetensors<1, >=0.*
+scikit-learn<2, >=1.*
+scipy<2, >=1.*
+semver<4, >=3.*
+sentence-transformers<3, >=2.*
+sentencepiece<1, >=0.*
+six<2, >=1.
+smmap<6, >=5.
+sniffio<=2.*, > = 1.
+SQLAlchemy<=2.*, > = 2.
+streamlit==1.{latest}  # Specify the latest stable release or a specific version if needed.
+sympy<=2.*, > = 1.
+tenacity<=9.*, > = 8.
+threadpoolctl<=4.*, > = 3.
+tiktoken<=1.*, > = 0.
+tokenizers<=14.*, > = 13.
+toml<=1.*, > = 0.
+toolz<=2.*, > = 1.
+torch<=3.*, > = 2.
+torchvision<=21.*, > = 20.
+tornado<=7.*, > = 6.
+tqdm<=5.*, > = 4.
+transformers<=5.*, > = 4.
+typing-inspect<=1.*, > = 0.
+typing_extensions<=5.*, > = 4.
+tzdata<=2025.*, > = 2024.
+tzlocal<=6.*, > = 5.
+urllib3<=2.*, > = 1.
+validators<=1., > = 0.
+watchdog<=6., > = 5.
+yarl<=2., > = 1.
+zipp<=4., > = 3.
