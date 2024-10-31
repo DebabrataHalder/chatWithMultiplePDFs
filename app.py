@@ -218,7 +218,6 @@
 
 
 
-
 import os
 import logging
 import streamlit as st
@@ -231,6 +230,7 @@ from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain_community.vectorstores import Pinecone as PineconeStore
 from langchain_groq import ChatGroq
 from pinecone import Pinecone, Index, ServerlessSpec
+import torch  # Ensure PyTorch is imported
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -242,7 +242,9 @@ def get_pdf_text(pdf_docs):
         try:
             pdf_reader = PdfReader(pdf)
             for page in pdf_reader.pages:
-                text += page.extract_text() or ""  # Handle None return from extract_text()
+                page_text = page.extract_text() or ""  # Handle None return from extract_text()
+                text += page_text
+                logging.debug(f"Extracted text from page: {page_text[:50]}...")  # Log first 50 chars of extracted text
         except Exception as e:
             logging.error(f"Error reading PDF {pdf.name}: {e}")
             st.error(f"Error reading PDF {pdf.name}. Please check the file.")
@@ -250,6 +252,7 @@ def get_pdf_text(pdf_docs):
     return text
 
 def get_text_chunks(text):
+    logging.info("Splitting text into chunks...")
     text_splitter = CharacterTextSplitter(
         separator="\n",
         chunk_size=1000,
@@ -263,25 +266,32 @@ def get_text_chunks(text):
 def get_vectorstore(text_chunks):
     try:
         api_key = os.environ.get("PINECONE_API_KEY")
-        pc = Pinecone(api_key=api_key)
+        if not api_key:
+            logging.error("Pinecone API key is not set.")
+            st.error("Pinecone API key is not set. Please check your environment variables.")
+            return None
 
+        pc = Pinecone(api_key=api_key)
         index_name = "llm"
 
         if index_name not in pc.list_indexes().names():
+            logging.info(f"Creating new index: {index_name}")
             pc.create_index(
                 name=index_name,
                 dimension=768,
                 metric="euclidean",
                 spec=ServerlessSpec(cloud="aws", region="us-east-1")
             )
+        else:
+            logging.info(f"Using existing index: {index_name}")
 
         index_info = pc.describe_index(index_name)
         host = index_info.host
+        logging.info(f"Index host: {host}")
 
         index = Index(index_name=index_name, api_key=api_key, host=host)
 
         embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
-
         vectorstore = PineconeStore.from_texts(texts=text_chunks, embedding=embeddings, index_name=index_name)
         
         logging.info("Vector store created successfully.")
@@ -290,6 +300,7 @@ def get_vectorstore(text_chunks):
     except Exception as e:
         logging.error(f"Error creating vector store: {e}")
         st.error("An error occurred while creating the vector store.")
+        return None
 
 def get_conversation_chain(vectorstore):
     try:
@@ -310,15 +321,21 @@ def get_conversation_chain(vectorstore):
         st.error("An error occurred while setting up the conversation chain.")
 
 def handle_userinput(user_question):
+    logging.info(f"User question received: {user_question}")
     if st.session_state.conversation is not None:
         response = st.session_state.conversation({'question': user_question})
-        st.session_state.chat_history = response['chat_history']
+        
+        if 'chat_history' in response:
+            st.session_state.chat_history = response['chat_history']
+            logging.info("Chat history updated.")
 
-        for i, message in enumerate(st.session_state.chat_history):
-            if i % 2 == 0:
-                st.write(f"*User:* {message.content}")
-            else:
-                st.write(f"*Bot:* {message.content}")
+            for i, message in enumerate(st.session_state.chat_history):
+                if i % 2 == 0:
+                    st.write(f"*User:* {message.content}")
+                else:
+                    st.write(f"*Bot:* {message.content}")
+        else:
+            logging.warning("No chat history returned in response.")
     else:
         st.warning("Please process the documents first.")
 
@@ -367,7 +384,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 
 
