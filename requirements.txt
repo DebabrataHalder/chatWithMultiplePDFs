@@ -57,7 +57,7 @@ numpy==1.26.0
 openai==0.27.8
 openapi-schema-pydantic==1.2.4
 orjson==3.9.1
-packaging==24.3.1
+packaging==24.1
 pandas==2.2.0
 pillow==11.1.0
 pinecone==5.0.0
