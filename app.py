@@ -70,7 +70,7 @@ def get_vectorstore(text_chunks):
             pc.create_index(
                 name=index_name,
                 dimension=768,
-                metric="euclidean",
+                metric="cosine",
                 spec=ServerlessSpec(cloud="aws", region="us-east-1")
             )
 
