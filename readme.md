@@ -15,13 +15,16 @@ Command 1 : git clone https://github.com/DebabrataHalder/chatWithMultiplePDFs.gi
 Command 2 : cd chatWithMultiplePDFs
 
 Install Dependencies
+
 Command 1 : pip install -r requirements.txt
 
 
 Download the Llama Model:
+
 Command 1 : ollama pull llama3.2:1b
 
 Run the Application:
+
 Command 1 : streamlit run app.py
 
 
