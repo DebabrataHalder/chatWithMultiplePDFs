@@ -9,6 +9,7 @@ Steps to Run the Application
 
 
 Clone the Repository: Open your command line interface (CLI) and run:
+
 Command 1 : git clone https://github.com/DebabrataHalder/chatWithMultiplePDFs.git
 
 Command 2 : cd chatWithMultiplePDFs
