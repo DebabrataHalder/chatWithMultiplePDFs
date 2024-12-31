@@ -1,15 +1,16 @@
-
 import os
 import logging
 from dotenv import load_dotenv
 import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import HuggingFaceInstructEmbeddings
+# from langchain.embeddings import HuggingFaceInstructEmbeddings
+from langchain_cohere import CohereEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
-from langchain.llms import Ollama
+# from langchain.llms import Ollama
+from langchain_groq import ChatGroq
 
 # Load environment variables
 load_dotenv()
@@ -41,15 +42,22 @@ def get_text_chunks(text):
     return chunks
 
 # Function to create a FAISS vectorstore
+# def get_vectorstore(text_chunks):
+#     embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+#     vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
+#     return vectorstore
+
 def get_vectorstore(text_chunks):
-    embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+    cohere_api_key = os.getenv("COHERE_API_KEY")
+    embeddings = CohereEmbeddings(model="embed-english-v3.0", cohere_api_key=cohere_api_key)
     vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vectorstore
 
 # Function to set up the conversational retrieval chain
 def get_conversation_chain(vectorstore):
     try:
-        llm = Ollama(model="llama3.2:1b")
+        # llm = Ollama(model="llama3.2:1b")
+        llm = ChatGroq(model="llama-3.1-70b-versatile", temperature=0.5)
         memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
         
         conversation_chain = ConversationalRetrievalChain.from_llm(
@@ -107,7 +115,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 
 
